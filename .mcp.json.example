@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "example-slack": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-your-bot-token"
+      }
+    }
+  }
+}

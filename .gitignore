@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude Code MCP config (may contain secrets)
+.mcp.json
+
+# Secrets / env files
+scripts/.env
+
+# Scratch / temp files
+*.tmp
+
+# Runtime logs
+scripts/logs/
+
+# Team directory (private per-user notes, agent state, todo lists)
+team/*
+# Keep the TEMPLATE directory for onboarding
+!team/TEMPLATE
+!team/TEMPLATE/**
+
+# Notebook runtime outputs
+data/notebooks/.venv/
+data/notebooks/outputs/
+data/reports/charts/
+
+# Data exports
+data/reports/archive/
+data/reports/*.csv
+*.DS_Store

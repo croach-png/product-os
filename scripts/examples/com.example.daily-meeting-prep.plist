@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- SETUP: Replace "example" with your project name in the Label -->
+    <key>Label</key>
+    <string>com.example.daily-meeting-prep</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <!-- SETUP: Update this path to match your deploy directory -->
+        <string>/Users/YOURUSERNAME/.local/bin/pm-workspace/run-with-alert.sh</string>
+        <string>/Users/YOURUSERNAME/.local/bin/pm-workspace/daily-meeting-prep.sh</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <!-- SETUP: Replace with your home directory -->
+        <string>/Users/YOURUSERNAME</string>
+        <key>USER</key>
+        <string>YOURUSERNAME</string>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <!-- Run at 7:30am on weekdays -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <!-- Monday -->
+        <dict>
+            <key>Weekday</key><integer>1</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>30</integer>
+        </dict>
+        <!-- Tuesday -->
+        <dict>
+            <key>Weekday</key><integer>2</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>30</integer>
+        </dict>
+        <!-- Wednesday -->
+        <dict>
+            <key>Weekday</key><integer>3</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>30</integer>
+        </dict>
+        <!-- Thursday -->
+        <dict>
+            <key>Weekday</key><integer>4</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>30</integer>
+        </dict>
+        <!-- Friday -->
+        <dict>
+            <key>Weekday</key><integer>5</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>30</integer>
+        </dict>
+    </array>
+
+    <!-- SETUP: Update these paths -->
+    <key>StandardOutPath</key>
+    <string>/Users/YOURUSERNAME/.local/bin/pm-workspace/logs/daily-meeting-prep-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/YOURUSERNAME/.local/bin/pm-workspace/logs/daily-meeting-prep-stderr.log</string>
+</dict>
+</plist>

@@ -1,0 +1,17 @@
+You are running as an automated daily briefing. Generate a full daily prep brief.
+
+Read these files for context:
+- team/{initials}/todo_list.md — current action items and Today's Focus
+- context/current-priorities.md — quarterly priorities
+- team/{initials}/agents/state/cos.md — Chief of Staff state (if it exists)
+
+Then:
+1. Check today's calendar for meetings
+2. For each meeting, generate a brief prep note (attendees, context, open items)
+3. Review the todo list and identify Today's Focus items
+4. Flag any overdue follow-ups (>3 working days)
+5. Note any schedule conflicts or concerns
+
+Write the output to team/{initials}/daily-prep-{today's date}.md
+
+Keep the output concise and actionable. Lead with the most important items.
