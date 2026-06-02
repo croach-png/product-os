@@ -125,33 +125,18 @@ You don't have to do all seven in one sitting. Even just `company.md` and `curre
 
 ---
 
-## Phase 3: Set up your workspace (10 minutes)
+## Phase 3: Set up your workspace (5 minutes)
 
-### 1. Create your team directory
+Your workspace is created by the `/setup-agent` command in Phase 5. It builds your team directory, copies the todo list, sets up agent directories, and bootstraps the agent's context from your calendar and meeting notes in one step. You don't need to do anything manually here — skip to Phase 4 unless you specifically want to start without a persistent agent.
+
+If you only want the todo list (no persistent agent yet):
 
 ```bash
 mkdir -p team/{YOUR_INITIALS}
-```
-
-Replace `{YOUR_INITIALS}` with your initials (e.g. `team/JK`). This directory is gitignored — it's for your private notes, todo list, and agent state.
-
-### 2. Create your todo list
-
-```bash
 cp team/TEMPLATE/todo_list.md team/{YOUR_INITIALS}/todo_list.md
 ```
 
-The `/todo` command reads and updates this file after meetings.
-
-### 3. Set up agent directories
-
-```bash
-mkdir -p team/{YOUR_INITIALS}/agents/state
-mkdir -p team/{YOUR_INITIALS}/agents/memory
-cp team/TEMPLATE/agents/memory/shared.md team/{YOUR_INITIALS}/agents/memory/shared.md
-```
-
-These directories store persistent agent state. See Phase 5 for how agents work.
+Then come back to Phase 5 when you're ready to add an agent.
 
 ---
 
@@ -180,7 +165,7 @@ The more you connect, the more powerful the workflows become. But start without 
 
 ## Phase 5: Activate agents (come back to this later)
 
-The workspace includes 8 persistent agent templates. Don't set these up on day one — get comfortable with the slash commands first, then come back here when you're ready.
+The workspace includes perspective agents you can use right away and persistent agents that maintain state between sessions.
 
 ### Perspective agents (ready to use now)
 
@@ -196,23 +181,33 @@ These work out of the box with no setup. They're stateless specialist lenses you
 
 Try `@executive` on a project doc to see how it reframes your work for a leadership audience.
 
-### Persistent agents (require setup)
+### Persistent agents (one command to set up)
 
-These maintain state between sessions and can run on automated schedules.
+Persistent agents maintain state between sessions, build long-term memory, and can run on automated schedules. Setup is a single command.
+
+```
+/setup-agent SJ, Steve, cos
+```
+
+Replace with your initials, first name, and chosen agent type. The command:
+
+1. Checks which MCPs you have connected and flags missing ones with concrete reasoning
+2. Creates your team directory, todo list, and shared memory file
+3. Copies the right starter agent and personalises it with your details
+4. Bootstraps context from your calendar (recurring meetings), meeting notes (action items, decisions) and messaging
+5. Tells you exactly what to review, how to test the agent, and how to correct what it gets wrong
 
 | If you are... | Start with |
 |--------------|-----------|
 | Any PM | **cos** (Chief of Staff) — meeting prep, action tracking |
 | Data-driven PM | **analyst** — metric monitoring, experiment analysis |
+| PM owning user-facing features | **uxr** — qualitative signal synthesis |
 | PM with direct reports | **manager** — team tracking, development |
-| Anyone | **engineer** — workspace health, automation |
+| Anyone wanting structured reflection | **coach** — weekly operating reviews |
+| PM presenting to execs regularly | **strategist** — narrative framing, exec feedback tracking |
+| When you have 3+ automations running | **engineer** — workspace health, automation reliability |
 
-To activate a persistent agent:
-
-1. Open the agent template in `.claude/agents/{agent-name}.md`
-2. Follow the `<!-- CUSTOMISATION GUIDE -->` at the bottom
-3. Replace placeholders with your details
-4. Invoke with `@{agent-name}` in Claude Code
+Want the full guide? Read `.claude/agents/examples/README.md` — it explains the 3-layer system (definition + state + memory), how to connect agents to messaging, how to automate them on a schedule, and what separates a good agent from a great one.
 
 ### Stakeholder agents
 
@@ -224,7 +219,7 @@ To stress-test proposals against real exec pushback:
 
 ### Automation
 
-Once agents are working interactively, you can automate their refreshes. See `scripts/README.md` for the automation framework.
+Once an agent is producing output worth reading daily (typically after 1-2 weeks), automate its refresh on a schedule. See `.claude/agents/examples/README.md` for the full pattern, and `scripts/README.md` for deployment.
 
 ---
 

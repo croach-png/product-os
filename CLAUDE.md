@@ -84,6 +84,7 @@ Each command file includes frontmatter with `owner`, `audience`, and `purpose` m
 | Command | Arguments | Purpose |
 |---------|-----------|---------|
 | `/create-new-project` | — | Guided project/experiment doc creation with Socratic questioning |
+| `/setup-agent` | `{initials}, {name}, {agent}` | Set up a new persistent agent — creates workspace, personalises definition, bootstraps context from live sources |
 | `/interview-feedback` | `{name}, {level}, {type}` | Generate PM interview scorecard from meeting transcript |
 | `/meeting-prep` | `{person name}` (optional) | Generate structured prep brief for a single upcoming meeting |
 | `/meeting-schedule` | `{name1}, {name2}, ...` | Find mutual availability and schedule a meeting |
@@ -163,15 +164,15 @@ All agent files in `.claude/agents/` use frontmatter to identify their type:
 | Product Manager | `product-manager` | Every investigation builds on prior work | `team/{initials}/agents/state/product-manager.md` |
 | Engineer | `engineer` | Workspace runs cleanly and reliably | `team/{initials}/agents/state/engineer.md` |
 
-See `GETTING-STARTED.md` for how to activate and customise agents.
+**Setting one up:** run `/setup-agent {INITIALS}, {Name}, {agent}` (e.g. `/setup-agent SJ, Steve, cos`). One command creates the team directory, personalises the agent definition, bootstraps context from your calendar and meeting notes, and tells you how to test and refine it. See `.claude/agents/examples/README.md` for the full guide on how persistent agents work, how to connect them to messaging, and how to automate them on a schedule.
 
 ### State files
 
-Persistent agent state files live at `team/{initials}/agents/state/{short-name}.md`. They follow a strict format with a max 80-line budget (100 for product-manager). See `team/TEMPLATE/agents/state/example-state.md` for the format.
+Persistent agent state files live at `team/{initials}/agents/state/{short-name}.md`. They follow a strict format with a max 80-line budget (100 for product-manager). See `.claude/agents/examples/example-state.md` for a filled-in example, or `team/TEMPLATE/agents/state/{agent}.md` for the skeleton format.
 
 ### Long-term memory
 
-Each persistent agent also has a memory file at `team/{initials}/agents/memory/{short-name}.md` (150-line budget) plus a shared file at `team/{initials}/agents/memory/shared.md` (200-line budget). Memory stores permanent institutional knowledge — data gotchas, seasonal patterns, stakeholder preferences, past investigation conclusions — that survives state pruning and quarterly archives. See `context/agent-team.md` for full documentation.
+Each persistent agent also has a memory file at `team/{initials}/agents/memory/{short-name}.md` (150-line budget) plus a shared file at `team/{initials}/agents/memory/shared.md` (200-line budget). Memory stores permanent institutional knowledge — data gotchas, seasonal patterns, stakeholder preferences, past investigation conclusions — that survives state pruning and quarterly archives. See `.claude/agents/examples/README.md` for the full pattern.
 
 ## MCP integrations
 
